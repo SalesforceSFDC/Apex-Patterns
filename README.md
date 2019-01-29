@@ -28,3 +28,32 @@ for(Integer i=0; i<colors.size(); i++) {
 }
 ```
 
+## Apex Class Definition
+All objects have a state and a behavior, things that objects know about itself and things that an object can do.
+Variables are used to specify the state of an object, such as the object's Name or Type.  
+
+A class can contain other classes, exception types, and initialization code.
+
+An interface is like a class in which none of the methods have been implemented—the method signatures are there, but the body of each method is empty. To use an interface, another class must implement it by providing a body for all of the methods contained in the interface.
+
+Methods are used to control behavior, such as getOtherQuotes or copyLineItems.
+
+To define a class, specify the following:
+* Access modifiers:
+    * Must use one of the access modifiers (such as `public` or `global`) in the declaration of the top-level class.
+    * You do not have to use an access modifier in the declaration of an inner level class.
+* Optional definition modifiers (`virtual`, `abstract`, etc.)
+* Required: The keyword `class` followed by the name of the class.
+* Optional extensions and/or implementations
+
+Syntax to define a class:
+```apex
+private | public | global 
+[virtual | abstract | with sharing | without sharing]
+class ClassName [implements InterfaceNameList] [extends ClassName]
+{
+    //the body of the class
+}
+```
+* The `virtual` definition modifier declares that this class allows extension and overrides. You cannot override a method with the `override` keyword unless the class has been defined as `virtual`.
+* The `abstract` definition modifier declares that this class contains abstract methods, that is, methods that only have their signature declared and no body defined.
