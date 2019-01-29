@@ -23,6 +23,17 @@ public class EmailManager {
 
         //sendEmail returns an array of result objects.
         //Iterate through the list to inspect results.
-        //
+        //In this class, the methods sent only one email,
+        //so we should have only one result.
+        for(Messaging.SendEmailResult res : results) {
+            if(res.isSuccess()) {
+                System.debug('Email sent successfully');
+            } else {
+                sendResult = false;
+                System.debug('The following errors occured: ' + res.getErrors());
+            }
+        }
+
+        return sendResult;
     }
 }
