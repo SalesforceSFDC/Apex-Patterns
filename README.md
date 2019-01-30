@@ -1,3 +1,8 @@
+
+* [Object-Oriented Programming Concepts](http://java.sun.com/docs/books/tutorial/java/concepts/index.html)
+* [Access Modifiers](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_access_modifiers.htm)
+
+
 * The `global` access modifier, which is more permissive than the `public` modifier and allows access across namespaces and applications.
 
 ## List
@@ -57,3 +62,29 @@ class ClassName [implements InterfaceNameList] [extends ClassName]
 ```
 * The `virtual` definition modifier declares that this class allows extension and overrides. You cannot override a method with the `override` keyword unless the class has been defined as `virtual`.
 * The `abstract` definition modifier declares that this class contains abstract methods, that is, methods that only have their signature declared and no body defined.
+
+### Apex Class Definition
+```apex
+private | public | global 
+[virtual | abstract | with sharing | without sharing] 
+class ClassName [implements InterfaceNameList] [extends ClassName] 
+{ 
+// The body of the class
+}
+```
+
+### Class Variables
+```apex
+[public | private | protected | global] [final] [static] data_type variable_name 
+[= value] 
+```
+### Class Methods
+```apex 
+[public | private | protected | global] [override] [static] data_type method_name 
+(input parameters) 
+{
+// The body of the method
+}
+```
+
+* void - the method does not return a value.
