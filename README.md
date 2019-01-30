@@ -86,5 +86,13 @@ class ClassName [implements InterfaceNameList] [extends ClassName]
 // The body of the method
 }
 ```
-
+* Methods with a void return type are typically invoked as a stand-alone statement in Apex code. 
 * void - the method does not return a value.
+* In Apex, all primitive data type arguments, such as Integer or String, are passed into methods by value. 
+* This fact means that any changes to the arguments exist only within the scope of the method.
+* When the method returns, the changes to the arguments are lost.
+* Non-primitive data type arguments, such as sObjects, are passed into methods by reference. 
+* when the method returns, the passed-in argument still references the same object as before the method call.
+#### Example: Passing Primitive Data Type Arguments
+* This example shows how a primitive argument of type String is passed by value into another method.
+
