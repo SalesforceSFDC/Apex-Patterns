@@ -47,6 +47,19 @@ for(Integer i=0; i<colors.size(); i++) {
 * class encapsulates the methods that are related to managing email
 * member variables (attributes) 
 * accessor methods to access attributes
+* class member variables
+* Instance methods access class member variables.
+* Static methods are easier to call than instance methods because they don’t need to be called on an instance of the class but are called directly on the class name.
+
+### sObject
+* Every record in Salesforce is natively represented as an sObject in Apex. 
+* The Account sObject is an abstraction of the account record and holds the account field information in memory as an object.
+* Each Salesforce record is represented as an sObject before it is inserted into Salesforce.
+* when persisted records are retrieved from Salesforce, they’re stored in an sObject variable.
+* to create an sObject, you need to declare a variable and assign it to an sObject instance. The data type of the variable is the sObject type.
+* For custom relationship fields, the API name ends with the __r suffix. 
+* [Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.216.0.object_reference.meta/object_reference/sforce_api_objects_concepts.htm)
+
 All objects have a state and a behavior, things that objects know about itself and things that an object can do.
 Variables are used to specify the state of an object, such as the object's Name or Type.  
 
@@ -126,4 +139,9 @@ public class PassPrimitiveTypeExample {
         s = 'modified value';
     }
 }
+```
+#### Invoking a public method
+```apex
+EmailManager em = new EmailManager();
+em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
 ```
