@@ -7,6 +7,10 @@
 
 ## List
 You can add elements to a list when creating the list, or after creating the list by calling the add() method. 
+* lists don’t require you to determine ahead of time how many elements you need to allocate.
+* You can add elements to a list when creating the list, or after creating the list by calling the add() method.
+* List elements can be read by specifying an index between square brackets
+* you can use the get() method to read a list element.
 * Create a list and add elements to it:
 ```apex
 List<String> colors = new List<String> {'red', 'blue'};
@@ -34,6 +38,15 @@ for(Integer i=0; i<colors.size(); i++) {
 ```
 
 ## Apex Class Definition
+
+* Class methods can be called by triggers and other classes.
+* public method
+* private helper method - 
+* built-in Messaging methods
+* Apex class library
+* class encapsulates the methods that are related to managing email
+* member variables (attributes) 
+* accessor methods to access attributes
 All objects have a state and a behavior, things that objects know about itself and things that an object can do.
 Variables are used to specify the state of an object, such as the object's Name or Type.  
 
