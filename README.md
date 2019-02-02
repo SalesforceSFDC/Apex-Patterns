@@ -165,10 +165,41 @@ em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
 * Instance of a class === object
 * An instance member variable is declared inside a class, but not within a method.
 * Instance methods usually use instance member variables to affect the behavior of the method.
+* Static initialization code is a block of code preceded with the keyword static.
+* Similar to other static code, a static initialization code block is only initialized once on the first use of the class.
+* A class can have any number of either static or instance initialization code blocks.
+* They can appear anywhere in the code body.
+* The code blocks are executed in the order in which they appear in the file.
+
 #### Using Initialization Code
 * The instance initialization code in a class is executed each time an object is instantiated from that class. 
 * These code blocks run before the constructor.
 
+### Apex Properties
+* An Apex property is similar to a variable
+* Properties can be used to validate data before a change is made, 
+    * to prompt an action when data is changed (such as altering the value of other member variables), or * to expose data that is retrieved from some other source (such as another class).
+* getter accessor - The code in a get accessor executes when the property is read.
+* setter accessor - The code in a set accessor executes when the property is assigned a new value.
+* If a property has only a get accessor, it is considered read only.
+* If a property has only a set accessor, it is considered write only. 
+* A property with both accessors is considered read-write.
+
+#### Property Declaration
+```apex
+Public class BasicClass {
+
+   // Property declaration
+   access_modifier return_type property_name {
+      get {
+         //Get accessor code block
+      }
+      set {
+         //Set accessor code block
+      }
+   } 
+}
+``` 
 ### Inheritance
 * OOP suggests that you do not modify the existing code but extend it so that testing can be done only on the new code and there are fewer maintenance issues. === inheritance
 * To use inheritance in Apex, we need to use the `virtual` or `abstract` keywords in the base class and methods.
