@@ -145,3 +145,83 @@ public class PassPrimitiveTypeExample {
 EmailManager em = new EmailManager();
 em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
 ```
+### Static Methods and Variables
+* You can use static methods and variables only with outer classes.
+* Inner classes have no static methods or variables.
+* Before an object of a class is created, all static member variables in a class are initialized, and all static initialization code blocks are executed.
+* These items are handled in the order in which they appear in the class.
+* A static method is used as a utility method, and it never depends on the value of an instance member variable. 
+* Because a static method is only associated with a class, it can’t access the instance member variable values of its class.
+* A static variable is static only within the scope of the Apex transaction.
+* It’s not static across the server or the entire organization.
+* The value of a static variable persists within the context of a single transaction and is reset across transaction boundaries. 
+* For example, if an Apex DML request causes a trigger to fire multiple times, the static variables persist across these trigger invocations.
+* All instances of the same class share a single copy of the static variable.
+* recursive trigger - trigger that calls itself.
+* define the static variables in a class so that the trigger can access these class member variables and check their static values.
+* A class static variable can’t be accessed through an instance of that class.
+* Local variable names are evaluated before class names.
+* Instance methods and member variables are used by an instance of a class, that is, by an object.
+* Instance of a class === object
+* An instance member variable is declared inside a class, but not within a method.
+* Instance methods usually use instance member variables to affect the behavior of the method.
+#### Using Initialization Code
+* The instance initialization code in a class is executed each time an object is instantiated from that class. 
+* These code blocks run before the constructor.
+
+### Inheritance
+* OOP suggests that you do not modify the existing code but extend it so that testing can be done only on the new code and there are fewer maintenance issues. === inheritance
+* To use inheritance in Apex, we need to use the `virtual` or `abstract` keywords in the base class and methods.
+* `virtual` keyword states that a class or method can be inherited and overridden by child classes. 
+* `extends` keyword is used in a child class to inform a parent class.
+* If we are writing the same method again in a child class of a parent class, then the `override` keyword needs to be used. 
+* `override` keyword informs Apex that this is a new version of the same method in the parent class. 
+* If we want to call any method in a parent class, we need to use the `super` keyword.
+* a child class is able to reuse a parent class method with an added behavior. 
+* The type of object is Mario, which is the parent class, but Apex is able to call a method of the Mario_Runclass using dynamic dispatch, which is a kind of Polymorphism.
+* Assigning a child class reference to a parent class is known as subtype polymorphism.
+#### Static and dynamic dispatch
+* Types of polymorphism can be identified on the basis of when an implementation is selected. 
+* when an implementation is selected at compile time, it is known as static dispatch. 
+* When an implementation is selected while a program is running (in case of a virtual method), it is known as dynamic dispatch.
+#### Interface
+* `interface` is another way to achieve polymorphism and abstraction in Apex. 
+* We cannot instantiate interfaces
+* we can assign any child class to them
+* Huge applications and APIs are created using interfaces. 
+* `Queueable` and `Schedulable` are examples of interfaces.
+*  Apex only needs to invoke the `execute()` method in your class because it knows that you follow the contract of an `interface`.
+* Apex does not support multiple inheritance where one child class extends multiple parent classes at a time. However, using an `interface` a child class can implement multiple interfaces at a time.
+### Abstract Classes
+* In inheritance, a child class extends a parent class, where both the classes have full implementations. 
+* In an interface, a parent class does not have any implementation and depends on child classes completely. 
+
+```apex
+public abstract class GameCoin { 
+     
+  public abstract Integer coinValue(); 
+     
+  public Integer absorbCoin(Integer existingPoint){ 
+    return existingPoint + coinValue(); 
+  }  
+} 
+```
+
+* we cannot instantiate an abstract class
+### Advantages of Design Patterns
+* Coupling measures the dependency of software components on each other.
+    * this is how two components interact with each other and pass information.
+* robustness of the code:  the impact it has on a component if any related component is modified.
+* low coupling indicates a good code structure.
+* Cohesion measures the degree to which a code component has been well built and focused.
+* Encapsulation - all the related data and functionalities should be encapsulated in the same program component (for example, a class). 
+    * It ensures that all related functionalities are present in one place and controls their accessibility. 
+    * Lower code cohesion indicates lower dependency of modules/classes, that is, higher maintainability, less complexity, and lesser impact on the part of change.
+* high cohesion is better for you and indicates that a class is doing a well-defined job. 
+* Low cohesion means that a class is doing many jobs with little in common between jobs.
+* In Apex, a static variable lasts for the duration of an individual user request execution only (until the time the user request is being processed on a server). 
+### The single responsibility principle (SRP)
+The advantages of SRP are as follows:
+* It makes code as easy as possible to reuse
+* Small classes can be changed easily
+* Small classes are more readable
