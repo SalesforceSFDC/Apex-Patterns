@@ -294,4 +294,7 @@ To access the records that caused the trigger to fire, use context variables.
 | `isBefore` | Returns `true` if this trigger was fired before any record was saved. |
 | `isAfter` | Returns `true` if this trigger was fired after all records were saved. |
 | `isUndelete` | Returns `true` if this trigger was fired after a record is recovered from the Recycle Bin (that is, after an undelete operation from the Salesforce user interface, Apex, or the API.) |
-| `new` | Returns a list of the new versions of the sObject records.  This sObject list is only available in insert, update, and undelete triggers, and the records can only be modified in before triggers. |
+| `new` | Returns a list of the new versions of the sObject records.  This sObject list is only available in `insert`, `update`, and `undelete` triggers, and the records can only be modified in `before` triggers. |
+| `newMap` | A map of IDs to the new versions of the sObject records.  This map is only available in `before update`, `after insert`, `after update`, and `after undelete` triggers. |
+| `old` | Returns a list of the old versions of the sObject records.  This sObject list is only available in `update` and `delete` triggers.|
+| `oldMap`| A map of IDs to the old versions of the sObject records.  This map is only available in `update` and `delete` triggers. |
