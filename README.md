@@ -260,3 +260,31 @@ The advantages of SRP are as follows:
 * It makes code as easy as possible to reuse
 * Small classes can be changed easily
 * Small classes are more readable
+
+## SOSL
+Like SOQL, SOSL allows you to search your organization’s records for specific information. Unlike SOQL, which can only query one standard or custom object at a time, a single SOSL query can search all objects.
+
+Another difference is that SOSL matches fields based on a word match while SOQL performs an exact match by default (when not using wildcards). For example, searching for 'Digital' in SOSL returns records whose field values are 'Digital' or 'The Digital Company', but SOQL returns only records with field values of 'Digital'.
+* [SOQL and SOSL Reference Document](https://developer.salesforce.com/docs/atlas.en-us.216.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm)
+* SOSL indexes data for searching
+* Use SOQL to retrieve records for a single object.
+* Use SOSL to search fields across multiple objects. SOSL queries can search most text fields on an object.
+* The search query in the Query Editor and the API must be enclosed within curly brackets ({Wingo}). In contrast, in Apex the search query is enclosed within single quotes ('Wingo').
+* Search terms can be grouped with logical operators (AND, OR) and parentheses. 
+* search terms can include wildcard characters (*, ?). 
+* The * wildcard matches zero or more characters at the middle or end of the search term. 
+* The ? wildcard matches only one character at the middle or end of the search term.
+* Text searches are case-insensitive.
+
+## Triggers
+* Before triggers are used to update or validate record values before they’re saved to the database.
+* After triggers are used to access field values that are set by the system (such as a record's `Id` or `LastModifiedDate` field), and to affect changes in other records. The records that fire the after trigger are read-only.
+### Using Context Variables
+To access the records that caused the trigger to fire, use context variables.
+* `Trigger.New` contains all the records that were inserted in insert or update triggers. 
+* `Trigger.Old` provides the old version of sObjects before they were updated in update triggers, or a list of deleted sObjects in delete triggers.
+
+### Trigger Context Variables
+| Variable | Usage |
+| --- | --- |
+| `isExecuting` | Returns true if the current context for the Apex code is a trigger, not a Visualforce page, a Web service, or an executeanonymous() API call. |
