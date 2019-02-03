@@ -288,4 +288,9 @@ To access the records that caused the trigger to fire, use context variables.
 | Variable | Usage |
 | --- | --- |
 | `isExecuting` | Returns true if the current context for the Apex code is a trigger, not a Visualforce page, a Web service, or an `executeanonymous()` API call. |
-| `isInsert` | Returns true if this trigger was fired due to an insert operation, from the Salesforce user interface, Apex, or the API. |
+| `isInsert` | Returns `true` if this trigger was fired due to an insert operation, from the Salesforce user interface, Apex, or the API. |
+| `isUpdate` | Returns `true` if this trigger was fired due to an update operation, from the Salesforce user interface, Apex, or the API. |
+| `isDelete` | Returns `true` if this trigger was fired due to a delete operation, from the Salesforce user interface, Apex, or the API. |
+| `isBefore` | Returns `true` if this trigger was fired before any record was saved. |
+| `isAfter` | Returns `true` if this trigger was fired after all records were saved. |
+| `isUndelete` | Returns `true` if this trigger was fired after a record is recovered from the Recycle Bin (that is, after an undelete operation from the Salesforce user interface, Apex, or the API.) |
