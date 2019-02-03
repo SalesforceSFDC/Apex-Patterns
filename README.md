@@ -200,6 +200,10 @@ Public class BasicClass {
    } 
 }
 ``` 
+Where:
+* access_modifier is the access modifier for the property. The access modifiers that can be applied to properties include: `public`, `private`, `global`, and `protected`. In addition, these definition modifiers can be applied: `static` and `transient`
+* return_type is the type of the property, such as `Integer`, `Double`, `sObject`, and so on.
+* 
 ### Inheritance
 * OOP suggests that you do not modify the existing code but extend it so that testing can be done only on the new code and there are fewer maintenance issues. === inheritance
 * To use inheritance in Apex, we need to use the `virtual` or `abstract` keywords in the base class and methods.
