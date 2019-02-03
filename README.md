@@ -298,3 +298,6 @@ To access the records that caused the trigger to fire, use context variables.
 | `newMap` | A map of IDs to the new versions of the sObject records.  This map is only available in `before update`, `after insert`, `after update`, and `after undelete` triggers. |
 | `old` | Returns a list of the old versions of the sObject records.  This sObject list is only available in `update` and `delete` triggers.|
 | `oldMap`| A map of IDs to the old versions of the sObject records.  This map is only available in `update` and `delete` triggers. |
+| `size` | The total number of records in a trigger invocation, both old and new. |
+
+* Triggers are often used to access and manage records related to the records in the trigger context—the records that caused this trigger to fire.
