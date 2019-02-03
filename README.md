@@ -287,4 +287,5 @@ To access the records that caused the trigger to fire, use context variables.
 ### Trigger Context Variables
 | Variable | Usage |
 | --- | --- |
-| `isExecuting` | Returns true if the current context for the Apex code is a trigger, not a Visualforce page, a Web service, or an executeanonymous() API call. |
+| `isExecuting` | Returns true if the current context for the Apex code is a trigger, not a Visualforce page, a Web service, or an `executeanonymous()` API call. |
+| `isInsert` | Returns true if this trigger was fired due to an insert operation, from the Salesforce user interface, Apex, or the API. |
