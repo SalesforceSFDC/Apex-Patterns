@@ -111,3 +111,18 @@ System.assertEquals(1, i); // Since a single batch can hold up to 200 records an
                        // only three records should have been returned, the 
                        // loop should have executed only once
 
+
+List<Account> aa = [SELECT Id, Name FROM Account WHERE Name = 'Acme'];
+//From this list access individual elements:
+if (!aa.isEmpty) {
+    //....
+}
+
+//create new object from existing query
+Contact c = new Contact(Account = [SELECT Name FROM Account 
+    WHERE NumberOfEmployees > 10 LIMIT 1]);
+c.FirstName = 'James';
+c.LastName = 'Joyce';
+
+// The count method can be used to return the number of rows returned by a query. 
+// The following example returns the total number of contacts with the last name of Weissman:
