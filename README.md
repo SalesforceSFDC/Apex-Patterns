@@ -301,3 +301,7 @@ To access the records that caused the trigger to fire, use context variables.
 | `size` | The total number of records in a trigger invocation, both old and new. |
 
 * Triggers are often used to access and manage records related to the records in the trigger context—the records that caused this trigger to fire.
+* To prevent saving records in a trigger, call the `addError()` method on the sObject in question.
+* `addError()` method throws a fatal error inside a trigger. 
+
+### Triggers and Callouts
