@@ -305,3 +305,9 @@ To access the records that caused the trigger to fire, use context variables.
 * `addError()` method throws a fatal error inside a trigger. 
 
 ### Triggers and Callouts
+* Apex calls to external Web services are referred to as callouts. 
+*  When making a callout from a trigger, the callout must be done asynchronously so that the trigger process doesn’t block you from working while waiting for the external service's response.
+* The asynchronous callout is made in a background process, and the response is received when the external service returns it.
+* To make a callout from a trigger, call a class method that executes asynchronously.
+* Such a method is called a future method and is annotated with `@future(callout=true)`.
+* [Invoking Callouts Using Apex](https://developer.salesforce.com/docs/atlas.en-us.216.0.apexcode.meta/apexcode/apex_callouts.htm)
