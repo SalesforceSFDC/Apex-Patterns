@@ -14,5 +14,7 @@ public class OuterClass {
     static { MY_INT = 2; }
 
     //Member variable for outer class
-    private final String m;   
+    private final String m;
+    
+       
 }
