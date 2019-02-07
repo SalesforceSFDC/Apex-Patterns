@@ -311,3 +311,10 @@ To access the records that caused the trigger to fire, use context variables.
 * To make a callout from a trigger, call a class method that executes asynchronously.
 * Such a method is called a future method and is annotated with `@future(callout=true)`.
 * [Invoking Callouts Using Apex](https://developer.salesforce.com/docs/atlas.en-us.216.0.apexcode.meta/apexcode/apex_callouts.htm)
+
+### Trigger Factory
+* [Pros and Cons of using a Trigger Factory](https://salesforce.stackexchange.com/questions/101835/pros-and-cons-of-using-a-trigger-factory)
+
+### Asynchronous Apex
+| Type | Overview | Common Scenario |
+| Future Methods | Run in their own thread, and do not start until resources are available. | Web service callout. |
