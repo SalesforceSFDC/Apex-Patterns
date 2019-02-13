@@ -13,6 +13,6 @@
 
     public String username {get; set;}
     public String email {get; set;}
-    public String password {  }
+    public String password {get: set {} }
 
  }

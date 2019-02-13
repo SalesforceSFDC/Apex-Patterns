@@ -1,1 +1,3 @@
-public class CentralizeObjectInitialization
+public class CentralizeObjectInitialization {
+    
+}
