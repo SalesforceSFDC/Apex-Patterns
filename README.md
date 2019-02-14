@@ -1,6 +1,7 @@
 
 * [Object-Oriented Programming Concepts](http://java.sun.com/docs/books/tutorial/java/concepts/index.html)
 * [Access Modifiers](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_access_modifiers.htm)
+* [Lightning Picklist Component](https://naveendhanaraj.wordpress.com/2018/06/19/lightning-picklist-component/)
 
 
 * The `global` access modifier, which is more permissive than the `public` modifier and allows access across namespaces and applications.
@@ -318,3 +319,46 @@ To access the records that caused the trigger to fire, use context variables.
 ### Asynchronous Apex
 | Type | Overview | Common Scenario |
 | Future Methods | Run in their own thread, and do not start until resources are available. | Web service callout. |
+
+### Apex Test Classes
+The benefits of Apex unit tests:
+* Having a suite of regression tests that can be rerun every time classes and triggers are updated to ensure that future updates you make to your app don’t break existing functionality
+* Meeting the code coverage requirements for deploying Apex to production or distributing Apex to customers via packages
+* High-quality apps delivered to the production org, which makes production users more productive
+* High-quality apps delivered to package subscribers, which increase your customers trust
+
+#### Apex Unit Tests
+UNIT TESTING is a level of software testing where individual units/ components of a software are tested. The purpose is to validate that each unit of the software performs as designed. A unit is the smallest testable part of any software. It usually has one or a few inputs and usually a single output.
+* Unit tests are class methods that verify whether a particular piece of code is working properly.
+* Unit test methods take no arguments, commit no data to the database, send no emails, and are flagged with the `testMethod` keyword or the `@isTest` annotation in the <b>method definition</b>.
+
+##### `@isTest` annotation
+* Use the `@isTest` annotation to define classes and methods that only contain code used for testing your application. 
+* The `@isTest` annotation on methods is equivalent to the `testMethod` keyword.
+* `@isTest` annotation can take multiple modifiers within parentheses and separated by blanks.
+
+* 75% of Apex code must be covered by tests, and all those tests must pass.
+* code coverage is a requirement for deployment
+*  test the common use cases in your app, 
+* including positive and negative test cases,
+* and bulk and single-record processing
+* Test methods take no arguments
+* The visibility of a test method doesn’t matter
+* testing framework is always able to access test methods
+* For this reason, the access modifiers are omitted in the syntax.
+* Test methods must be defined in test classes, which are classes annotated with isTest
+* Test classes can be either private or public.
+* If you’re using a test class for unit testing only, declare it as private. 
+* The verifications are done by calling the `System.assertEquals()` method, which takes two parameters: 
+        * the first is the expected value, and 
+        * the second is the actual value. 
+
+* private access member variable
+* private inner class
+* private method
+* private custom exception
+* `@TestVisible` - private or protectd members can be accessed by test methods and only code running in test context.
+* 
+
+## Schema Namespace
+A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.

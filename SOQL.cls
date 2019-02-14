@@ -126,3 +126,4 @@ c.LastName = 'Joyce';
 
 // The count method can be used to return the number of rows returned by a query. 
 // The following example returns the total number of contacts with the last name of Weissman:
+Integer i = [SELECT COUNT() FROM Contact WHERE LastName = 'Weissman'];
