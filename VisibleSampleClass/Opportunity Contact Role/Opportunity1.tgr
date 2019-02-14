@@ -1,0 +1,5 @@
+trigger Opportunity1 on Opportunity (after insert) {
+    OpportunityContactRole.AfterInsertOpportunity(
+        trigger.new, trigger.newMap
+    );
+}
