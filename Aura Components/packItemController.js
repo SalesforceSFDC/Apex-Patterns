@@ -52,3 +52,5 @@ createExpense: function(component, expense) {
 // 2. Next we attach a data payload to the action. We need to send the data for the new expense up to the server. 
 // use action.setParams() and provide a JSON-style object with parameter name-parameter value pairs. 
 // parameter name must match the parameter name used in your Apex method declaration.
+// 3. set the callback for the request. -  this is what will happen when the server returns a response.
+// 4. get() the expenses attribute, push() a value onto it, and then set() it.
