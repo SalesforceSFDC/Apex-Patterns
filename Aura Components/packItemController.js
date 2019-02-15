@@ -51,3 +51,4 @@ createExpense: function(component, expense) {
 // 1. create an action (Apex controller method)= var action = component.get("c.saveExpense");
 // 2. Next we attach a data payload to the action. We need to send the data for the new expense up to the server. 
 // use action.setParams() and provide a JSON-style object with parameter name-parameter value pairs. 
+// parameter name must match the parameter name used in your Apex method declaration.
