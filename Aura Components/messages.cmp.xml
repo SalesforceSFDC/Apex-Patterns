@@ -25,3 +25,7 @@
         </aura:set>
     </aura:if>
 </aura:component>
+
+<aura:component>
+    <aura:attribute name="item" type="Camping_Item__c"/>
+</aura:component>
