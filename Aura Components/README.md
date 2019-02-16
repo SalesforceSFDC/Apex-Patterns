@@ -24,6 +24,8 @@
     }
 })
 ```
+* `updateExpense` is a custom event, that is, an event we write ourselves
+    * You can tell because, unlike getting a server action, we use component.getEvent() instead of component.get(). Also, what we are getting doesn’t have a value provider, just a name. 
 
 
 
