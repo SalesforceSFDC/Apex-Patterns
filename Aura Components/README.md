@@ -4,7 +4,17 @@
 * They are stand-alone elements that encapsulate all of their essential functionality. 
 * A component is not allowed to reach into another component, even a child component, and alter its internals.
 * There are two principal ways to interact with or affect another component:
-    * setting attributes on the component’s tag
+    * setting attributes on the component’s tag - A component’s public attributes constitute one part of its API.
+    * The second way to interact with a component is through events.  public events constitute a part of the component’s public API. 
+* `type="toggle"` is really a checkbox with a toggle switch design.
+* `class` enables you to apply custom CSS styling or use SLDS utilities.
+* `messageToggleActive` and `messageToggleInactive` provides a custom label for the checked and unchecked positions
+* `onchange` attribute of <lightning:input> gives us an easy way to wire the toggle switch to an action handler that updates the record when you slide right (checked) or slide left (unchecked)
+* callback to handle the response
+* Components do not reach into other components and set values on them. 
+
+
+
 
 ## Resources
 ### SLDS
