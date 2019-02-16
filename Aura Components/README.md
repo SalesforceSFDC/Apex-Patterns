@@ -1,3 +1,11 @@
+
+## Components
+* Lightning components are supposed to be self-contained. 
+* They are stand-alone elements that encapsulate all of their essential functionality. 
+* A component is not allowed to reach into another component, even a child component, and alter its internals.
+* There are two principal ways to interact with or affect another component:
+    * setting attributes on the component’s tag
+
 ## Resources
 ### SLDS
 * [SLDS](https://www.lightningdesignsystem.com/)
