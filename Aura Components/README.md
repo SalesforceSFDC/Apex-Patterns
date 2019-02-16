@@ -13,6 +13,17 @@
 * callback to handle the response
 * Components do not reach into other components and set values on them. 
 
+#### clickReimbursed Handler
+```javascript
+({
+    clickReimbursed: function(component, event, helper) {
+        var expense = component.get("v.expense");
+        var updateEvent = component.getEvent("updateExpense");
+        updateEvent.setParams("expense": expense);
+        updateEvent.fire();
+    }
+})
+```
 
 
 
