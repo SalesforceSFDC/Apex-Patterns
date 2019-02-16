@@ -30,6 +30,9 @@
 
 
 ## Resources
+### JavaScript
+* [JavaScript The Right Way](http://jstherightway.org/)
+
 ### SLDS
 * [SLDS](https://www.lightningdesignsystem.com/)
 ### Lightning Components

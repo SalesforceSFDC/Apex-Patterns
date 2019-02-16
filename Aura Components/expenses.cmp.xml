@@ -1,0 +1,8 @@
+<lightning:input type="toggle" 
+            label="Reimbursed?"
+            name="reimbursed"
+            class="slds-p-around--small"
+            checked="{!v.expense.Reimbursed__c}"
+            messageToggleActive="Yes"
+            messageToggleInactive="No"
+            onchange="{!c.clickReimbursed}"/>
