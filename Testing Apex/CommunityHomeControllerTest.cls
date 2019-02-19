@@ -1,6 +1,6 @@
 @isTest
 public class CommunityHomeControllerTest {
-    static testMethod void getTotalReports(){         
+    @isTest static void getTotalReports(){         
         Account a = new Account(Name='Test Account Name');
         insert a;           
         Contact c = new Contact(LastName = 'Contact Last Name');

@@ -55,7 +55,10 @@ private class onb_RegisterEntityDetailsControllerTest {
     }
     
     @isTest
-    
+    static void testIncompleteRegistration() {
+        String completeReg = onb_RegisterEntityDetailsController.completeRegistration('00300000003T2PGAA0', '', 'street2', 'city', 'country', 'California', '', 'products');
+
+    }
 
     @isTest
     static void testViewPageAsAdmin() {
