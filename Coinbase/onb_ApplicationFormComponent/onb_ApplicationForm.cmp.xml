@@ -1,0 +1,53 @@
+<aura:component description="Coinbase Onboarding 2.0 Application Form" controller="onb_ApplicationFormController" implements="forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes" extends="c:onb_BaseComponent">
+
+    <ltng:require scripts="{!$Resource.onb_OnboardingUtil}" afterScriptsLoaded="{!c.init}"/>
+
+    <aura:attribute name="fields" type="String[]" default="[]" />
+    <aura:attribute name="fieldNames" type="String" default="" />
+    <aura:attribute name="record" type="SObject" description="The record the fields are bound to that is returned from the server." access="private" />
+    <aura:attribute name="sObjectName" type="String" access="global" default="onb_Onboarding_Application__c" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+
+    <!--
+
+    add aura dependency for all form components that we will dynamically instantiate on the page
+    <aura:dependency>
+
+    -->
+
+    <!--
+    <div><ui:outputText value="{!v.record.Name}"/></div>
+    <div><ui:outputText value="{!v.record.Id}"/></div>
+    <div><ui:outputText value="{!v.record.Name}"/></div>
+    <div><ui:outputText value="{!v.record.Legal_Entity_Type__c}"/></div>
+    <div><ui:outputText value="{!v.record.Status__c}"/></div>
+    <div><ui:outputText value="{!v.record.Ops_Review_Status__c}"/></div>
+    <div><ui:outputText value="{!v.record.Onboarding_Account__c}"/></div>
+    <div><ui:outputText value="{!v.record.Applying_Contact__c}"/></div>
+    -->
+
+    <lightning:recordEditForm  recordId="{!v.record.Id}"  objectApiName="onb_Onboarding_Application__c">
+
+        <lightning:messages />
+
+
+        <aura:iteration items="{!v.fields}" var="field">
+
+            <lightning:inputField fieldName="{!field.APIName}"/>
+
+        </aura:iteration>
+
+        <div class="slds-m-top_medium">
+            <lightning:button disabled="{!v.disabled}" type="submit" name="save" label="Save" />
+        </div>
+
+    </lightning:recordEditForm>
+
+<!--
+
+    {!v.body}
+
+-->
+
+
+</aura:component>
