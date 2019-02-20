@@ -1,0 +1,143 @@
+<!--
+ - Created by joshuakrinsky on 2019-01-29.
+ - Vuk Djukic: 2/19/19 - Adding 'lightning:recordEditForm' component
+ -->
+
+<aura:component description="Coinbase Onboarding 2.0 Registration Entity Details" controller="onb_RegisterEntityDetailsController" implements="forceCommunity:availableForAllPageTypes" extends="c:onb_BaseComponent">
+
+    <ltng:require scripts="{!$Resource.onb_OnboardingUtil}" afterScriptsLoaded="{!c.init}"/>
+
+    <aura:attribute name="objInfo" type="String" default="{sobjectType : 'onb_Onboarding_Application__c'}" />
+    <aura:attribute name="countries" type="String" required="false" description="The business entity's country." />
+    <aura:attribute name="products" type="String" required="false" description="The available products." />
+    <aura:attribute name="userId" type="String" required="false" description="The current user id." />
+
+    <aura:attribute name="options" type="List" default="[]"/>
+    <aura:attribute name="selectedProducts" type="List"/>
+    
+    <aura:attribute name="listControllingValues" type="list" default="[]" description="to store controller field values"/>
+    <aura:attribute name="listDependingValues" type="list" default="['--- None ---']" description="to store dependent field values"/>
+    <aura:attribute name="depnedentFieldMap" type="map" description="map to store dependent values with controlling value"/>
+    <aura:attribute name="bDisabledDependentFld" type="boolean" default="true"/> 
+    
+    <!-- Vuk Djukic: Adding attributes for controlling and depending fields
+    <aura:attribute name="objDetail" type="onb_Onboarding_Application__c" default="{'sobjectType' : 'onb_Onboarding_Application__c'}"/>
+    <aura:attribute name="controllingFieldAPI" type="string" default="Business_Address_Country__c" description="store field API name of Controller field"/>
+    <aura:attribute name="dependingFieldAPI" type="string" default="State_Country__c" description="store field API name of dependent field"/>
+	-->
+
+    <div class="eaa">
+
+    <!--
+        Principal Place of Business - Full Address
+
+        Street 1
+        Street 2
+        City
+        Country
+        State (If US)
+        Postal Code
+        Product (s) Interested
+    -->
+        <div>
+            hello {!v.userId}
+        </div>
+        <lightning:recordEditForm aura:id="recordEditForm"
+                           objectApiName="onb_Onboarding_Application__c">
+            <!-- 'lightning:messages' to support error handling and displaying of error messages -->
+            <lightning:messages />
+            <lightning:inputField fieldName="Business_Address_Line_1__c" />
+            <lightning:inputField fieldName="Business_Address_Line_2__c" />
+            <lightning:inputField fieldName="Business_Address_City__c" />
+            <lightning:inputField fieldName="Business_Address_Country__c" />
+            <lightning:inputField fieldName="State_Country__c" />
+            <lightning:inputField fieldName="Business_Address_Postal_Code__c" />
+            <lightning:inputField fieldName="" />
+            <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+        </lightning:recordEditForm>
+        
+        
+        <div>
+            hello {!v.userId}
+        </div>
+
+        <div class="inputContainer">
+            <ui:inputText value="" aura:id="street1" placeholder="Street 1" keyup="{!c.onKeyUp}" class="inputBox"/>
+        </div>
+
+
+        <div class="inputContainer">
+            <ui:inputText value="" aura:id="street2" placeholder="Street 2" keyup="{!c.onKeyUp}" class="inputBox"/>
+        </div>
+
+        <div class="inputContainer">
+            <ui:inputText value="" aura:id="city" placeholder="City" keyup="{!c.onKeyUp}" class="inputBox"/>
+        </div>
+
+        <div class="inputContainer">
+
+            <ui:inputSelect class="slds-select" aura:id="country" change="{!c.countryChange}"/>
+
+        </div>
+
+        <!-- Vuk Djukic: Controller Field: Country -->
+        <!--div class="inputContainer">
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:select name="controllerFld"
+                              value="{!v.objDetail.Business_Address_Country__c}"
+                              label="Country"
+                              onchange="{!c.onControllerFieldChange}">
+                <aura:iteration items="{!v.listControllingValues}" var="val">
+                    <option value="{!val}">{!val}</option>
+                </aura:iteration>
+            </lightning:select>
+        </lightning:layoutItem>
+        </div-->
+
+        <!--Vuk Djukic: Dependent Field: State/Province -->
+        <!--div class="inputContainer">
+            <lightning:layoutItem size="12" padding="around-small">
+                <lightning:select name="dependentFld"
+                                  value="{!v.objDetail.State_Country__c}"
+                                  label="State/Province"
+                                  disabled="{!v.bDisabledDependentFld}">
+                    <aura:iteration items="{!v.listDependingValues}" var="val">
+                        <option value="{!val}">{!val}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+        </div-->
+
+     <!--   
+        <div class="inputContainer">
+
+            <ui:inputSelect class="slds-select" aura:id="state" change="{!c.stateChange}"/>
+
+        </div>
+	--> 
+        <div class="inputContainer">
+            <ui:inputText value="" aura:id="postalCode" placeholder="Postal Code" keyup="{!c.onKeyUp}"  class="inputBox"/>
+        </div>
+
+        <div class="inputContainer">
+
+            <lightning:checkboxGroup
+                name="products"
+                label="Products"
+                aura:id="products"
+                onchange="{! c.productsChange }"
+                options="{! v.options }"
+                value="{! v.selectedProducts }"
+            />
+
+            <!--ui:inputSelect class="slds-select" aura:id="products" change="{!c.productsChange}"/-->
+
+        </div>
+
+        <div class="sfdc">
+            <ui:button aura:id="submitButton" label="Complete Registration" press="{!c.completeSelfRegister}" class="sfdc_button"/>
+        </div>
+
+
+    </div>
+</aura:component>
