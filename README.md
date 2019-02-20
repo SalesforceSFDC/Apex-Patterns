@@ -362,3 +362,17 @@ UNIT TESTING is a level of software testing where individual units/ components o
 
 ## Schema Namespace
 A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.
+
+## Static and Instance Methods, Variables, and Initialization Code
+### Using Instance Methods and Variables
+* Instance methods and member variables are used by an instance of a class, that is, by an object.
+* An instance member variable is declared inside a class, but not within a method. 
+* Instance methods usually use instance member variables to affect the behavior of the method.
+* A class static variable can’t be accessed through an instance of that class. 
+* If class MyClass has a static variable `myStaticVariable`, and `myClassInstance` is an instance of `MyClass`, `myClassInstance.myStaticVariable` is not a legal expression.
+* The same is true for instance methods. If `myStaticMethod()` is a static method, `myClassInstance.myStaticMethod()` is not legal. 
+* Instead, refer to those static identifiers using the class: `MyClass.myStaticVariable` and `MyClass.myStaticMethod()`.
+* An inner class behaves like a static Java inner class, but doesn’t require the static keyword. 
+### Using Initialization Code
+
+
