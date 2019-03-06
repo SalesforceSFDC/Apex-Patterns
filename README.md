@@ -376,3 +376,262 @@ A namespace is a declarative region that provides a scope to the identifiers (th
 ### Using Initialization Code
 
 
+### Constants 
+Apex constants are variables whose values do not change after being initialized once.  Constants can be defined using the `final` keyword.  
+The `final` keyword means that the variable can be assigned at most once, either in the declaration itself, or with a static initializer method if the constant is defined in a class. 
+*  This example declares two constants. The first is initialized in the declaration statement. The second is assigned a value in a static block by calling a static method.
+```apex
+public class myClass {
+    static final Integer PRIVATE_INT_CONST = 220;
+    static final Integer PRIVATE_INT_CONST2;
+
+    public static Integer calculate() {
+        return 2 + 7;
+    }
+
+    static {
+        PRIVATE_INT_CONST2 = calculate;
+    }
+}
+```
+
+### Classes 
+* `virtual` - definition modifier declares that this class allows extension and overrides.  You cannot override a method with the `override` keyword unless the class has been defined as `virtual`
+* `abstract` - definition modifier declares that this class contains abstract methods - methods that only have their signature declared and no body defined.
+* a class can implement multiple interfaces but only extend one existing class.  Apex does not support multiple inheritance
+* use `void` if method does not return a value
+* Class variable and class methods
+* Passed into methods by value: primitive data types
+* Passed into methods by reference: non-primitive data types
+
+###
+* This example shows how a List argument is passed by reference into the `reference()` method and is modified
+* It then shows, in the referenceNew() method, that the List argument can’t be changed to point to another List object.
+* 1-- the createTemperatureHistory method creates a variable, fillMe, that is a List of Integers and passes it to a method.
+
+```Apex 
+public class PassNonPrimitiveTypeExample {
+
+}
+```
+### Static and Instance Methods, Variables, and Initialization Code
+Apex classes cannot be static.
+* Static methods
+    * associated with a class
+    * allowed only in outer classes
+    * Initialized only when a class is loaded
+    * ARE NOT transmitted as part of the view state for a Visualforce page
+* Static Variables
+    * associated with a class
+    * allowed only in outer classes
+    * Initialized only when a class is loaded
+    * ARE NOT transmitted as part of the view state for a Visualforce page
+* Static Initialization code
+    * associated with a class
+    * allowed only in outer classes
+    * Initialized only when a class is loaded
+    * ARE NOT transmitted as part of the view state for a Visualforce page
+* Instance methods
+    * associated with a particular object
+    * have no definition modifier
+    * created with every object instantiated from the class in which they are created
+* Instance Member Variables
+    * associated with a particular object
+    * have no definition modifier
+    * created with every object instantiated from the class in which they are created
+* Instance Initialization code
+    * associated with a particular object
+    * have no definition modifier
+    * created with every object instantiated from the class in which they are created
+* Local Variables
+    * associated with a block of code in which they are declared
+    * must be initialized before they are used
+#### Using Static Methods and Variables
+* You can use static methods and variables only with outer classes.
+* Inner classes have no static methods or variables.
+* A static method or variable doesnt require an instance of a class to run 
+* Before an object of a class is created, all static member variables in a class are initialized, and all static initialization code blocks are executed.  
+* These items are handled in the order in which they appear in the class
+* A static method is used as a utlitiy method, and it never depends on the value of an instance member variable.
+* Because a static method is only associated with a class, it cant access the instance member variable values of its class
+* static variable is static only within the scope of the Apex transaction.  
+* it is not static across the server or the entire organization
+* the value of a static variable persists within the context of a single transaction and is reset across transaction boundaries
+* `to information that is shared across instances of a class, use a static variable`
+* all instances of the same class share a single copy of the static variable
+* all triggers that a single transaction spawns can communicate with each other by viewing and updating static variables in a related class
+* a recursive trigger can use the value of a class variable to determine when to exit the recursion
+* define the static variables in a class so that the trigger can access these class member variables and check their static values
+* a class static variable cant be accessed through an instance of that class.  
+```apex
+// MyClass has a static variable = myStaticVariable
+// myClassInstance is an instance of MyClass
+myClassInstance.myStaticVariable // not a legal expression
+MyClass.myStaticVariable // legal
+MyClassInstance.myStaticMethod() // not a legal expression
+MyClass.myStaticMethod() // legal
+```
+* local variable names are evaluated before class names.
+ 
+### Using Instance Methods and Variables
+Instance methods and member variables are used by an instance of a class, object.
+* an instance member variable is declared inside a class, but not within a method
+* instance methods usually use instance member variables to affect the behavior of a method
+
+```apex
+public class Plotter {
+    // This inner class manages the points
+    class Point {
+        Double x;
+        Double y;
+
+        Point(Double x, Double y) {
+            this.x = x;
+            this.y = y;
+        }
+        Double getXCoordinate() {
+            return x;
+        }
+        Double getYCoordinate() {
+            return y;
+        }
+    }
+
+    List<Point> points = new List<Point>();
+
+    public void plot(Double x, Double y) {
+        points.add(new Point(x, y));
+    }
+
+    // The followting method takes the list of points and does somethin
+    public void render() {
+
+    }
+}
+```
+* The instance initialization code in a class is executed each time an object is instantiated from that class. 
+* These code blocks run before the constructor.
+* static initialization block runs only once, regardless of how many times you access the class that contains it.
+* Static initialization code is a block of code preceded with the keyword `static`.
+* The code blocks are executed in the order in which they appear in the file
+* You can use static initialization code to initialize static final variables and to declare information that is static, such as a map of values.
+
+### Apex Properties
+An Apex property is similar to a variable; however, you can do additional things in your code to a property value before it is accessed or returned. 
+* Properties can be used to validate data before a change is made
+* to prompt an action when data is changed 
+* to expose data that is retrieved from some other source (such as another class).
+* Property definitions include one or two code blocks, representing a get accessor and a set accessor:
+* The code in a get accessor executes when the property is read.
+* The code in a set accessor executes when the property is assigned a new value.
+* If a property has only a get accessor, it is considered read only. 
+* If a property has only a set accessor, it is considered write only. 
+* A property with both accessors is considered read-write.
+* To declare a property, use the following syntax in the body of a class:
+```apex
+Public class BasicClass {
+
+    // Property declaration
+    access_modifier return_type property_name {
+        get {
+            // Get accessor code block
+        }
+        set {
+            // Set accessor code block
+        }
+    }
+}
+``` 
+* access_modifier is the access modifier for the property. The access modifiers that can be applied to properties include: `public`, `private`, `global`, and `protected`. In addition, these definition modifiers can be applied: `static` and `transient`.
+* `return_type` is the type of the property, such as `Integer`, `Double`, `sObject`, and so on.
+```apex
+public class BasicProperty {
+    public Integer prop {
+        get { return prop; }
+        set { prop = value; }
+    }
+}
+```
+Call the `BasicProperty` class:
+```apex
+BasicProperty bp = new BasicProperty();
+bp.prop = 5; // calls set accessor
+System.assertEqual(5, bp.prop); // calls get accessor
+```
+* The body of the get accessor is similar to that of a method. 
+* It must return a value of the property type. 
+* Executing the get accessor is the same as reading the value of the variable.
+* The get accessor must end in a return statement.
+* We recommend that your get accessor not change the state of the object that it is defined on.
+* The set accessor is similar to a method whose return type is void.
+* When you assign a value to the property, the set accessor is invoked with an argument that provides the new value.
+* When the set accessor is invoked, the system passes an implicit argument to the setter called value of the same data type as the property.
+* Properties cannot be defined on `interface`.
+* Properties provide storage for values directly. 
+* You do not need to create supporting members for storing values.
+* Properties do not require additional code in their get or set accessor code blocks.
+* The following example creates three automatic properties:
+```apex
+public class AutomaticProperty {
+    public integer MyReadOnlyProperty { get; }
+    public double MyReadWriteProperty { get; set; }
+    public string MyWriteOnlyProperty { set; }
+}
+// calling this class:
+AutomaticProperty ap = new AutomaticProperty();
+ap.MyReadOnlyProperty = 5; // this produces a compile error: not writable
+ap.MyReadWriteProperty = 5; // No error
+System.assertEquals(5, MyWriteOnlyProperty); // This produces a compile error: not readable
+```
+
+### Using Static Properties
+When a property is declared as `static`, the property's accessor methods execute in a static context. 
+* accessors do not have access to non-static member variables defined in the class. 
+```apex
+public class StaticProperty {
+    private static integer StaticMember;
+    private integer NonStaticMember;
+
+    // The following produces a system error
+    // public static integer MyBadStaticProp { return NonStaticMember; }
+
+    public static integer MyGoodStaticProperty {
+        get { return StaticMember; }
+        set { StaticMember = value; }
+    }
+
+    public integer MyGoogNonStaticProperty {
+        get { return NonStaticMember; }
+        set { NonStaticMember = value; }
+    }
+}
+
+// call the instance and static properties
+StaticProperty sp = new StaticProperty();
+// The following produces a system error: a static variable cannot be
+// accessed through an object instance
+// sp.MyGoodStaticProp = 5;
+// The following does not produce an error
+StaticProperty.MyGoodStaticProp = 5;
+```
+### Using Access Modifiers on Property Accessors
+Property accessors can be defined with their own access modifiers. 
+* If an accessor includes its own access modifier, this modifier overrides the access modifier of the property. 
+* The access modifier of an individual accessor must be more restrictive than the access modifier on the property itself. 
+```apex
+global virtual class PropertyVisibility {
+    // X is private for read and public for write
+    public integer X { private get; set; }
+    // Y can be globally read but only written within a class
+    global integer Y { get; public set; }
+    // Z can be read within the class but only subclasses can set it
+    public integer Z { get; protected set; }
+}
+```
+### Extending a Class
+A class that extends another class inherits all the methods and properties of the extended class.
+* the extending class can override the existing virtual methods by using the override keyword in the method definition. 
+* Overriding a virtual method allows you to provide a different implementation for an existing method. 
+* This means that the behavior of a particular method is different based on the object you’re calling it on. This is referred to as polymorphism.
+* A class extends another class using the extends keyword in the class definition. 
+* A class can only extend one other class, but it can implement more than one interface.
