@@ -1,6 +1,9 @@
 /** 
 * To include SOQL queries within your Apex code, wrap the SOQL statement within square brackets and assign
 * the return value to an array of sObjects. 
+* SOQL and SOSL statements in Apex can reference Apex code variables and expressions if they’re preceded by a colon (:). 
+* This use of a local code variable within a SOQL or SOSL statement is called a bind. 
+* The Apex parser first evaluates the local variable in code context before executing the SOQL or SOSL statement.
 */
 Account[] accts = [SELECT Name, Phone FROM Account];
 
